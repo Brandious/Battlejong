@@ -65,7 +65,7 @@ export function createState(inParentComponent: React.Component) {
      * @param inLayout The board layout.
      */
     handleMessage_start: function(inLayout: number[][][]) {
-
+      
       this.setState({
         timeSinceLastMatch : new Date().getTime(),
         layout : inLayout,

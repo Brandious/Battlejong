@@ -4,6 +4,7 @@ export function createSocketComm(parentComponent: React.Component)
 {
     const connection: WebSocket = new WebSocket("ws://localhost:8080");
 
+    
     connection.onopen = () => {
         console.log("Connection opened to server");
     }
@@ -18,7 +19,7 @@ export function createSocketComm(parentComponent: React.Component)
 
         const msgParts: string[] = message.data.split("_");
         const msg: string = msgParts[0];
-
+       
         switch (msg) {
           case "connected":
             this.state.handleMessage_connected(msgParts[1]);

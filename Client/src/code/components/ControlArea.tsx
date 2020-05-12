@@ -1,6 +1,7 @@
 import React from 'react'
 
-export default function ControlArea({state}: any) {
+const ControlArea = ({state}: any) => {
+    console.log(state.gameState)
     return (
         <>
             <div style={{float:"left", width: "130px"}}>
@@ -52,3 +53,4 @@ export default function ControlArea({state}: any) {
         </>
     )
 }
+export default ControlArea;

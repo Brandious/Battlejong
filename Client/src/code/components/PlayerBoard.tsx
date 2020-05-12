@@ -46,7 +46,7 @@ import tile141 from "../../img/tile141.png";
 import tile142 from "../../img/tile142.png";
 
 
-export default function PlayerBoard({state} : any) {
+const PlayerBoard = ({state} : any) => {
 
     const tileWidth: number = 72;
     const tileHeight: number = 88;
@@ -61,24 +61,26 @@ export default function PlayerBoard({state} : any) {
     let xOffset: number = 0;
     let yOffset: number = 0;
 
-
+    console.log("Here I am", state.layout.length);
     for(let i:number = 0; i < state.layout.length; i++)
     {
+     ;
         xOffset = xOffset + tileShadowWidth;
-        yOffset = yOffset + tileShadowHeight
-        const layer: number[][] = state.layout;
-
+        yOffset = yOffset - tileShadowHeight
+        const layer: number[][] = state.layout[i];
+        
+   
         for(let j:number = 0; j < layer.length; j++)
         {
             let row: number[] = layer[j];
-            for(let k:number =0; k < row.length; k++)
+            for(let k:number = row.length; k >= 0; k--)
             {
                 let tileVal: number = row[k];
 
                 if(tileVal > 0)
                 {
                     const xLoc: number = ((k * tileWidth) - (k * tileShadowWidth)) + xOffset + xAdjust;
-                    const yLoc: number = ((j * tileWidth) - (j * tileShadowWidth)) + yOffset + yAdjust;
+                    const yLoc: number = ((j * tileHeight) - (j * tileShadowHeight)) + yOffset + yAdjust;
                     
                     const style: CSSProperties = 
                     {
@@ -154,3 +156,6 @@ export default function PlayerBoard({state} : any) {
             </>
     )
 }
+
+
+export default PlayerBoard;
